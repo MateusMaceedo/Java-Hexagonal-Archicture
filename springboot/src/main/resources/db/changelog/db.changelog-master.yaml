@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001_create_table_students
+      author: seu_nome_aqui
+      changes:
+        - createTable:
+            tableName: students
+            columns:
+              - column:
+                  name: id
+                  type: varchar(36)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
