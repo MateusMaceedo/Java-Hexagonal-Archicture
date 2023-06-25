@@ -5,4 +5,6 @@ public class EstoqueDTO {
     public double getQuantidade() {
         return quantidade;
     }
+    public void setQuantidade(int i) {
+    }
 }
