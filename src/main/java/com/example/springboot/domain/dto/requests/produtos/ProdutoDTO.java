@@ -25,4 +25,12 @@ public class ProdutoDTO {
     public ProdutoDTO() {
 
     }
+
+    public void setId(UUID id) {
+        this.codigo = id;
+    }
+
+    public UUID getId() {
+        return codigo;
+    }
 }

@@ -54,5 +54,9 @@ public class Produto {
     public ProdutoDTO toProdutoDTO() {
         return new ProdutoDTO(this.codigo, this.sku, this.nome, this.preco, this.quantidade);
     }
+
+    public void setId(UUID id) {
+        this.codigo = id;
+    }
 }
 
