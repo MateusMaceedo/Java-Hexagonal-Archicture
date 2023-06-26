@@ -6,10 +6,8 @@ import com.example.springboot.domain.ports.interfaces.AtualizarEstoqueInterface;
 import com.example.springboot.infrastructure.config.repositories.ProdutoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
-
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -33,7 +31,7 @@ public class AtualizarEstoqueUseCaseImplTest {
         EstoqueDTO estoqueDTO = new EstoqueDTO();
         estoqueDTO.setQuantidade(10);
 
-        Produto produto = mock(Produto.class); // Mock do objeto Produto
+        Produto produto = mock(Produto.class);
         when(produtoRepository.buscarPeloSku(sku)).thenReturn(produto);
 
         atualizarEstoqueUseCase.atualizarEstoque(sku, estoqueDTO);
