@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "BuscaCepDTO",
+  "namespace": "com.example.springboot.domain.dto.responses.cep",
+  "fields": [
+    { "name": "cep", "type": "string" },
+    { "name": "logradouro", "type": "string" },
+    { "name": "complemento", "type": "string" },
+    { "name": "bairro", "type": "string" },
+    { "name": "localidade", "type": "string" },
+    { "name": "uf", "type": "string" }
+  ]
+}
