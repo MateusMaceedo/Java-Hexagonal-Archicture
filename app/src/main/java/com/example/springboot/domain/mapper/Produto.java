@@ -58,5 +58,9 @@ public class Produto {
     public void setId(UUID id) {
         this.codigo = id;
     }
+
+    public UUID getId() {
+        return codigo;
+    }
 }
 

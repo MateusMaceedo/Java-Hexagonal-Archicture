@@ -36,4 +36,16 @@ public class ProdutoEntity {
     public Produto toProduto() {
         return new Produto(this.codigo, this.sku, this.nome, this.quantidade, this.preco);
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public UUID getId() {
+        return codigo;
+    }
+
+    public void setId(UUID id) {
+        this.codigo = id;
+    }
 }
