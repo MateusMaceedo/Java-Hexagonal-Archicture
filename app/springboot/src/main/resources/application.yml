@@ -8,3 +8,16 @@ spring:
     spring.jpa.database.platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create-drop
+
+management:
+  endpoints:
+   enabled-by-default: false
+   web:
+    exposure:
+      include: 'health,metrics'
+  endpoint:
+   health:
+    enabled: true
+    show-details: always
+   metrics:
+    enabled: true
