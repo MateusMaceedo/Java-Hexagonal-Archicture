@@ -16,3 +16,6 @@ Arquitetura Hexagonal em Java.
 
 > Para acessar o dash do Prometheus, acessar a seguinte URL:
 - http://localhost:{portadaaplicacao}/
+
+> Para acessar o dash do Grafana, acessar a seguinte URL:
+- http://localhost:3000
