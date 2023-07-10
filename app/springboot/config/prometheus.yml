@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: "api-hexagonal-job"
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ["172.17.0.1:8081"]
+        labels:
+          application: "java-hexagonal-architecture"
