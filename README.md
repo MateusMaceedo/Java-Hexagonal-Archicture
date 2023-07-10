@@ -24,3 +24,6 @@ Arquitetura Hexagonal em Java.
 
 > Para rodar o SQS no docker-compose, digitar o seguinte comando:
 - docker-compose -f local-stack-docker-compose.yml up -d
+
+Para acessar o dash do SQS, acesse a URL:
+- http://localhost:9325
