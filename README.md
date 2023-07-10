@@ -19,3 +19,8 @@ Arquitetura Hexagonal em Java.
 
 > Para acessar o dash do Grafana, acessar a seguinte URL:
 - http://localhost:3000
+
+#### Local Stack
+
+> Para rodar o SQS no docker-compose, digitar o seguinte comando:
+- docker-compose -f local-stack-docker-compose.yml up -d
