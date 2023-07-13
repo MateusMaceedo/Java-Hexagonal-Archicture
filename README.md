@@ -27,3 +27,18 @@ Arquitetura Hexagonal em Java.
 
 Para acessar o dash do SQS, acesse a URL:
 - http://localhost:9325
+
+#### Comandos SQS
+``` bash
+ - Executar:
+   docker-compose -f sqs-docker-compose.yml up -d
+  - Enviar Mensagens:
+   URL: http://localhost:9325/
+   AWS CLI:
+    Criar Fila compra_cartao_credito:
+     aws --endpoint-url http://localhost:9324 sqs create-queue --queue-name compra_cartao_credito
+    Criar Fila compra_cartao_credito_aprovada:
+     aws --endpoint-url http://localhost:9324 sqs create-queue --queue-name compra_cartao_credito_aprovada
+    Criar mensagem na fila compra_cartao_credito(Opcional):
+     aws --endpoint-url http://localhost:9324 sqs send-message --queue-url http://localhost:9324/queue/compra_cartao_credito --message-body "{'numeroCartao': 123456478910 , 'valor': 543,00}"
+```
