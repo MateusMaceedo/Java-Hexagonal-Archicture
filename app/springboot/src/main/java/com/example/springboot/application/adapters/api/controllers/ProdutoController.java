@@ -10,20 +10,28 @@ import com.example.springboot.domain.ports.interfaces.AtualizarEstoqueInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
 import java.util.List;
 import java.util.UUID;
+import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
+import org.springframework.messaging.support.MessageBuilder;
 
 @RequiredArgsConstructor
 @RestController
 public class ProdutoController implements ProdutoAPI {
 
+    private final QueueMessagingTemplate queueMessagingTemplate;
     private final AtualizarEstoqueInterface atualizarEstoqueInterface;
     private final BuscarProdutosInterface buscarProdutosInterface;
     private final CriarProdutosInterface criarProdutosInterface;
     private final ConsultarProdutosPorIdInterface consultarProdutosPorIdInterface;
 
+    @Value("${cloud.aws.fila.compra_cartao_credito}")
+    private String uriCompraCartaoCredito;
+
     @PostMapping
     public void criarProdutos(@RequestBody ProdutoDTO produtoDTO) {
+        queueMessagingTemplate.send(uriCompraCartaoCredito, MessageBuilder.withPayload(produtoDTO).build());
         criarProdutosInterface.criarProduto(produtoDTO);
     }
 
