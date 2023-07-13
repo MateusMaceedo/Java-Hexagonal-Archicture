@@ -1,4 +1,4 @@
-package main.java.com.example.springboot.infrastructure.config.queue.sqs;
+package com.example.springboot.infrastructure.config.queue.sqs;
 
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.regions.Regions;

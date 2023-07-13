@@ -1,4 +1,4 @@
-package main.java.com.example.springboot.infrastructure.adapters.messagebroker.sqs.consumer.impl;
+package com.example.springboot.infrastructure.adapters.messagebroker.sqs.consumer.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
