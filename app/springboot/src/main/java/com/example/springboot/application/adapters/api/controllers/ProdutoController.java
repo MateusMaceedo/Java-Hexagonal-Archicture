@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.UUID;
 import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
 import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.cloud.aws.messaging.listener.annotation.SqsListener;
+import org.springframework.cloud.aws.messaging.listener.SqsMessageDeletionPolicy;
 
 @RequiredArgsConstructor
 @RestController
@@ -29,9 +31,14 @@ public class ProdutoController implements ProdutoAPI {
     @Value("${cloud.aws.fila.compra_cartao_credito}")
     private String uriCompraCartaoCredito;
 
+    @Value("${cloud.aws.fila.compra_cartao_credito_aprovada}")
+	  private String uriCompraCartaoCreditoAprovada;
+
     @PostMapping
     public void criarProdutos(@RequestBody ProdutoDTO produtoDTO) {
+
         queueMessagingTemplate.send(uriCompraCartaoCredito, MessageBuilder.withPayload(produtoDTO).build());
+        processMessage(produtoDTO.toString());
         criarProdutosInterface.criarProduto(produtoDTO);
     }
 
@@ -46,5 +53,10 @@ public class ProdutoController implements ProdutoAPI {
     @PutMapping(value = "/{sku}")
     public void atualizarEstoque(@PathVariable String sku, @RequestBody EstoqueDTO estoqueDTO) throws ChangeSetPersister.NotFoundException {
         atualizarEstoqueInterface.atualizarEstoque(sku, estoqueDTO);
+    }
+
+    @SqsListener(value = "${cloud.aws.fila.compra_cartao_credito}", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
+    public void processMessage(String message) {
+     queueMessagingTemplate.send(uriCompraCartaoCreditoAprovada, MessageBuilder.withPayload(message).build());
     }
 }
