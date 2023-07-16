@@ -28,13 +28,6 @@ public class SQSConsumerImpl {
 		envioMensagemFilaNovaSolicitacaoInconsistenteSalesForceRecebida(message);
 	}
 
-  // @SqsListener(value = "${cloud.aws.fila.compra_cartao_credito}", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
-  // public void processMessage(String message){
-  //   logger.info("Received message from SQS Queue - compra_cartao_credito: {}", message);
-
-  //   queueMessagingTemplate.send(uriCompraCartaoCreditoAprovada, MessageBuilder.withPayload(message).build());
-  // }
-
   public void envioMensagemFilaNovaSolicitacaoInconsistenteSalesForceRecebida(String mensagem ){
 		queueMessagingTemplate.send(uriCompraCartaoCreditoAprovada, MessageBuilder.withPayload(mensagem).build());
 	}
